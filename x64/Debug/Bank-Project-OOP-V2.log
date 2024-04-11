@@ -1,0 +1,48 @@
+﻿  Bank-Project-OOP-V2.cpp
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsString.h(41,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsString.h(64,26): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsString.h(292,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsString.h(359,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsString.h(389,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsString.h(429,30): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsInputValidate.h(116,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsInputValidate.h(120,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsBankClient.h(33,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsBankClient.h(264,24): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsBankClient.h(278,24): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsAddNewClientScreen.h(27,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsUpdateClientScreen.h(29,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsTotalBalancesScreen.h(57,60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'Bank-Project-OOP-V2.cpp')
+  
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\Bank-Project-OOP-V2.cpp(47,56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsBankClient.h(234): warning C4715: 'clsBankClient::Save': not all control paths return a value
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsBankClient.h(268): warning C4715: 'clsBankClient::Deposit': not all control paths return a value
+E:\Hadhod\c++ projects\Bank-Project-OOP-V2\clsBankClient.h(282): warning C4715: 'clsBankClient::Withdraw': not all control paths return a value
+  Bank-Project-OOP-V2.vcxproj -> E:\Hadhod\c++ projects\Bank-Project-OOP-V2\x64\Debug\Bank-Project-OOP-V2.exe
