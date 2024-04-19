@@ -7,6 +7,7 @@ using namespace std;
 class clsScreen
 {
 protected:
+
     static void _drawScreenHeader(string Title, string subTitle = "")
     {
         cout << "\t\t\t\t\t______________________________________";
@@ -17,7 +18,6 @@ protected:
         }
         cout << "\n\t\t\t\t\t______________________________________\n\n";
     }
-
 
 };
 

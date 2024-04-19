@@ -10,7 +10,9 @@
 #include "clsUpdateClientScreen.h"
 #include "clsDeleteClientScreen.h"
 #include "clsTransactions.h"
-
+#include "clsManageUsersScreen.h"
+#include "clsUserInfo.h"
+#include "clsGlobal.h"
 
 
 using namespace std;
@@ -81,68 +83,169 @@ private:
 
     static void _showManageUsersMenu()
     {
-        cout << "\nUsers Menue Will be here...\n";
+        clsManageUsersScreen::showManageUsersScreen();
 
     }
 
-    static void _showEndScreen()
+    static void _logOut()
     {
-        cout << "\nEnd Screen Will be here...\n";
+        activeUser = clsUserInfo::findUser("", "");
 
     }
 
     static void _performMainMenuOptions(enMainMenueOptions MainMenuOption)
     {
+        clsUserInfo::enMainMenuPermissions myPermission;
+
         switch (MainMenuOption)
         {
+
         case enMainMenueOptions::eListClients:
         {
-            system("cls");
-            _showAllClientsScreen();
-            _goBackToMainMenu();
+            
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pListClients)) {
+
+                system("cls");
+                _showAllClientsScreen();
+                _goBackToMainMenu();
+            }
+
+            else {
+
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+            }
+
             break;
         }
+
         case enMainMenueOptions::eAddNewClient:
-            system("cls");
-            _showAddNewClientsScreen();
-            _goBackToMainMenu();
+
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pAddNewClient)) {
+               
+                system("cls");
+                _showAddNewClientsScreen();
+                _goBackToMainMenu();
+
+            }
+                
+            else {
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+            }
+
             break;
 
         case enMainMenueOptions::eDeleteClient:
-            system("cls");
-            _showDeleteClientScreen();
-            _goBackToMainMenu();
+
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pDeleteClient)) {
+
+                system("cls");
+                _showDeleteClientScreen();
+                _goBackToMainMenu();
+
+            }
+
+            else {
+
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+
+            }
+
             break;
 
         case enMainMenueOptions::eUpdateClient:
-            system("cls");
-            _showUpdateClientScreen();
-            _goBackToMainMenu();
+
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pUpdateClients)) {
+
+                system("cls");
+                _showUpdateClientScreen();
+                _goBackToMainMenu();
+
+            }
+
+            else {
+
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+
+            }
+
             break;
 
         case enMainMenueOptions::eFindClient:
-            system("cls");
-            _showFindClientScreen();
-            _goBackToMainMenu();
+
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pDeleteClient)) {
+
+                system("cls");
+                _showTransactionsMenu();
+                _goBackToMainMenu();
+            }
+
+            else {
+
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+
+            }
+
             break;
 
         case enMainMenueOptions::eShowTransactionsMenu:
-            system("cls");
-            _showTransactionsMenu();
-            _goBackToMainMenu();
+
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pTransactions)) {
+
+                system("cls");
+                _showTransactionsMenu();
+                _goBackToMainMenu();
+                
+            }
+
+            else {
+
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+            }
+
             break;
 
         case enMainMenueOptions::eManageUsers:
-            system("cls");
-            _showManageUsersMenu();
-            _goBackToMainMenu();
+
+            if (activeUser.hasAccessPermission(clsUserInfo::enMainMenuPermissions::pManageUsers)) {
+
+                system("cls");
+                _showManageUsersMenu();
+                _goBackToMainMenu();
+               
+            }
+
+            else {
+
+                system("cls");
+                cout << "\nAccess denied\n";
+                _goBackToMainMenu();
+                system("cls");
+            }
+
             break;
 
         case enMainMenueOptions::eExit:
-            system("cls");
-            _showEndScreen();
-            //Login();
 
+            system("cls");
+            _logOut();
             break;
         }
 
@@ -158,7 +261,7 @@ public:
 
         system("cls");
         _drawScreenHeader("\t\tMain Screen", clsDate::dateToString(clsDate::getCurrentDate()));
-
+        cout << setw(37) << left << "" << "\t\tWelcome back " << activeUser.firstName << " :)" << endl;
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\t\t\tMain Menu\n";
         cout << setw(37) << left << "" << "===========================================\n";

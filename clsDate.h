@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
+
 #include <vector>
 #include <cctype>
 #include <ctime>
 #include "clsString.h"
+
 #pragma warning(disable : 4996)
 using namespace std;
 

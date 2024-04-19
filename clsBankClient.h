@@ -1,11 +1,13 @@
 #pragma once
 
 #include <iostream>
+
 #include <string>
 #include <vector>
 #include <fstream>
 #include "clsString.h"
 #include "clsPerson.h"
+
 
 
 class clsBankClient : public clsPerson
@@ -106,6 +108,7 @@ private:
 		
 		_loadDataFromObjVectorToFile(vClients);
 	}
+
 	void _addClientSave(){
 	
 		vector<clsBankClient> vClients = _loadDataFromFileToObjVector();
@@ -280,7 +283,6 @@ public:
 		 }
 
 	 }
-
 
 	 static double getTotalBalances() {
 
