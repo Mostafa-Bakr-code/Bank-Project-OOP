@@ -4,6 +4,8 @@
 #include <vector>
 #include <cctype>
 #include <ctime>
+#include <chrono>
+#include <thread>
 #include "clsString.h"
 
 #pragma warning(disable : 4996)
@@ -1002,6 +1004,28 @@ public:
 		year = now->tm_year + 1900;
 
 		return clsDate(day, month, year);
+	}
+
+
+	static string getCurrentTime() {
+		auto now = chrono::system_clock::now();
+		time_t time_now = chrono::system_clock::to_time_t(now);
+		string timeString = ctime(&time_now);
+		return timeString;
+	}
+
+
+	static string getCurrentTimeOnly() {
+		auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+		std::string timeString = std::ctime(&now);
+
+		// Extract time part (HH:MM:SS) from the ctime string
+		size_t pos = timeString.find_first_of(":");
+		if (pos != std::string::npos) {
+			timeString = timeString.substr(pos - 2, 8); // Extract the time part (HH:MM:SS)
+		}
+
+		return timeString;
 	}
 
 	static bool isValidDate(clsDate date) {

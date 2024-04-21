@@ -12,13 +12,16 @@
 class clsLogInScreen : protected clsScreen
 {
 
+private:
+
+
 public:
 
     static void showLogInScreen() {
         const int MAX_ATTEMPTS = 3;
         int attempts = 0;
 
-        _drawScreenHeader("\t     Log In Screen");
+		_drawScreenHeader("\t     Log In Screen");
 
         while (attempts < MAX_ATTEMPTS) {
 
@@ -30,6 +33,7 @@ public:
 
             if (clsUserInfo::isUserExist(userNumber, Password)) {
                 activeUser = clsUserInfo::findUser(userNumber, Password);
+                activeUser.loadLogsToFile();
                 clsMainScreen::showMainMenu();
                 return;
             }

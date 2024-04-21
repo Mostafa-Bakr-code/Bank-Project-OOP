@@ -10,7 +10,6 @@
 
 
 
-
 class clsUserInfo : public clsPerson
 {
 
@@ -300,6 +299,24 @@ public:
 
 	  }
 
+	   void loadLogsToFile() {
+
+		  string seperator = "#//#";
+
+		  fstream myFile;
+		  myFile.open("logFile.txt", ios::out | ios::app);
+
+		  if (myFile.is_open()) {
+
+			  myFile << clsDate::dateToString(clsDate::getCurrentDate()) + " - " + clsDate::getCurrentTimeOnly() + seperator;
+			  myFile << firstName + seperator;
+			  myFile << lastName + seperator;
+			  myFile << Password + seperator;
+			  myFile << to_string(Permission) << endl;
+
+			  myFile.close();
+		  }
+	  }
 
 
 
