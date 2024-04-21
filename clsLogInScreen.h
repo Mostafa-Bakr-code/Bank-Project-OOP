@@ -1,12 +1,10 @@
 #pragma once
 
 #include <iostream>
-
 #include "clsScreen.h"
 #include "clsMainScreen.h"
 #include "clsInputValidate.h"
 #include "clsUserInfo.h"
-
 #include "clsDate.h"
 #include <iomanip>
 
@@ -16,29 +14,36 @@ class clsLogInScreen : protected clsScreen
 
 public:
 
-	static void showLogInScreen() {
+    static void showLogInScreen() {
+        const int MAX_ATTEMPTS = 3;
+        int attempts = 0;
 
-		_drawScreenHeader("\t     Log In Screen", clsDate::dateToString(clsDate::getCurrentDate()));
+        _drawScreenHeader("\t     Log In Screen");
 
-		cout << "User Name: ";
-		string userNumber = clsInputValidate::readString();
-		cout << "Password: ";
-		string Password = clsInputValidate::readString();
+        while (attempts < MAX_ATTEMPTS) {
 
-		while (!clsUserInfo::isUserExist(userNumber, Password)) {
 
-			cout << "\n Wrong username or password\n";
-			cout << "User Name: ";
-			userNumber = clsInputValidate::readString();
-			cout << "Password: ";
-			Password = clsInputValidate::readString();
-		}
+            cout << "User Name: ";
+            string userNumber = clsInputValidate::readString();
+            cout << "Password: ";
+            string Password = clsInputValidate::readString();
 
-		 activeUser = clsUserInfo::findUser(userNumber, Password);
+            if (clsUserInfo::isUserExist(userNumber, Password)) {
+                activeUser = clsUserInfo::findUser(userNumber, Password);
+                clsMainScreen::showMainMenu();
+                return;
+            }
+            else {
+                cout << "\nWrong username or password\n";
+                cout << "Attempt " << attempts + 1 << " of 3 trials\n";
+                attempts++;
+            }
+        }
 
-		clsMainScreen::showMainMenu();
-
-	}
+        system("cls");
+        cout << "System locked. Please contact your admin." << endl;
+        exit(0);
+    }
 
 };
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "clsUserInfo.h"
-
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 

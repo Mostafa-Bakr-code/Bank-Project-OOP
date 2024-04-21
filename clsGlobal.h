@@ -3,5 +3,7 @@
 #include <iostream>
 #include "clsUserInfo.h"
 
-clsUserInfo activeUser = clsUserInfo::findUser("", "");
+
+
+clsUserInfo activeUser = clsUserInfo::findUser("","");
 

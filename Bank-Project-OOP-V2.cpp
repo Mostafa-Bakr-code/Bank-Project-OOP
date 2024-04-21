@@ -16,6 +16,4 @@ int main() {
 		clsLogInScreen::showLogInScreen();
 	}
 
-	
-
 }

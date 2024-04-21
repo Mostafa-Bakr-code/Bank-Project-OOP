@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
-
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsDate.h"
@@ -119,9 +118,8 @@ public:
         system("cls");
 
 		string Tiltle = "\tManage Users Screen";
-        string subTitle = clsDate::dateToString(clsDate::getCurrentDate());
-
-		_drawScreenHeader(Tiltle, subTitle);
+       
+		_drawScreenHeader(Tiltle);
 
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\tManage Users Menu\n";

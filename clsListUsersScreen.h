@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-
 #include "clsScreen.h"
 #include "clsUserInfo.h"
 

@@ -11,7 +11,7 @@
 #include "clsDeleteClientScreen.h"
 #include "clsTransactions.h"
 #include "clsManageUsersScreen.h"
-#include "clsUserInfo.h"
+//#include "clsUserInfo.h"
 #include "clsGlobal.h"
 
 
@@ -260,8 +260,8 @@ public:
     {
 
         system("cls");
-        _drawScreenHeader("\t\tMain Screen", clsDate::dateToString(clsDate::getCurrentDate()));
-        cout << setw(37) << left << "" << "\t\tWelcome back " << activeUser.firstName << " :)" << endl;
+        _drawScreenHeader("\t\tMain Screen");
+   /*     cout << setw(37) << left << "" << "\t\tWelcome back " << activeUser.firstName << " :)" << endl;*/
         cout << setw(37) << left << "" << "===========================================\n";
         cout << setw(37) << left << "" << "\t\t\tMain Menu\n";
         cout << setw(37) << left << "" << "===========================================\n";
