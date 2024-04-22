@@ -9,7 +9,7 @@
 #include "clsScreen.h"
 #include "clsUserInfo.h"
 
-class clsLogInRegisters : clsScreen
+class clsLogInRegisters : protected clsScreen
 {
 
 private:

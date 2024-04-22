@@ -9,6 +9,8 @@
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
+#include "clsTransfersScreen.h"
+#include "clsTransferLogsScreen.h"
 #include <iomanip>
 
 
@@ -17,7 +19,7 @@ class clsTransactions : protected clsScreen
 {
 private:
 
-	enum enTransactions { Deposit = 1, Withdraw = 2, totalBalances = 3, mainMenu = 4 };
+	enum enTransactions { Deposit = 1, Withdraw = 2, totalBalances = 3, Transfers = 4, TransferLogs = 5 ,mainMenu = 6 };
 
     static void _printClientCard(clsBankClient Client)
     {
@@ -51,6 +53,17 @@ private:
         clsTotalBalancesScreen::showTotalBalances();
     }
 
+
+    static void   _showTransfersScreen() {
+
+        clsTransfersScreen::showTransferScreen();
+    }
+
+    static void   _showTransfersLogScreen() {
+
+        clsTransferLogsScreen::showTransferLogsScreen();
+    }
+
     static void _performTransactionOptions(enTransactions transactionOption) {
 
         switch (transactionOption) {
@@ -76,6 +89,20 @@ private:
             _goBackToTransactionMenu();
             break;
 
+        case enTransactions::Transfers:
+
+            system("cls");
+            _showTransfersScreen();
+            _goBackToTransactionMenu();
+            break;
+
+        case enTransactions::TransferLogs:
+
+            system("cls");
+            _showTransfersLogScreen();
+            _goBackToTransactionMenu();
+            break;
+
         case enTransactions::mainMenu:
 
             break;
@@ -84,8 +111,8 @@ private:
 
     static short _readTransactionMenuOption()
     {
-        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 4]? ";
-        short Choice = clsInputValidate::ReadShortNumberBetween(1, 4, "Enter Number between 1 to 4? ");
+        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 6]? ";
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 6, "Enter Number between 1 to 6? ");
         return Choice;
     }
 
@@ -110,7 +137,9 @@ public:
         cout << setw(37) << left << "" << "\t[1] Deposit.\n";
         cout << setw(37) << left << "" << "\t[2] Withdraw.\n";
         cout << setw(37) << left << "" << "\t[3] Total Balances.\n";
-        cout << setw(37) << left << "" << "\t[4] Main Menu.\n";
+        cout << setw(37) << left << "" << "\t[4] Transfers.\n";
+        cout << setw(37) << left << "" << "\t[5] Transfers Logs.\n";
+        cout << setw(37) << left << "" << "\t[6] Main Menu.\n";
 
         cout << setw(37) << left << "" << "===========================================\n";
 

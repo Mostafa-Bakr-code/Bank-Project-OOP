@@ -118,6 +118,46 @@ private:
 	
 	}
 
+	void _loadTransferLogsToFile(clsBankClient destinationClient, double transferAmount) {
+
+		string seperator = "#//#";
+
+		fstream myFile;
+		myFile.open("transferLogs.txt", ios::out | ios::app);
+
+		if (myFile.is_open()) {
+
+			myFile << clsDate::dateToString(clsDate::getCurrentDate()) + " - " + clsDate::getCurrentTimeOnly() + seperator;
+			myFile << _accountNumber + seperator;
+			myFile << destinationClient.getAccountNumber() + seperator;
+			myFile << to_string(transferAmount) + seperator;
+			myFile << to_string(_accountBalance) + seperator;
+			myFile << to_string(destinationClient.accountBalance) + seperator;
+			myFile << firstName + " " + lastName << endl;
+
+			myFile.close();
+		}
+	}
+
+	struct stTransferLogs;
+
+	static stTransferLogs _convertLineToStTransferLogs(string line, string seperator = "#//#") {
+
+		vector<string> transferRecord = clsString::splitString(line, seperator);
+
+		stTransferLogs transferLog;
+
+		transferLog.time = transferRecord[0];
+		transferLog.sAccountNumber = transferRecord[1];
+		transferLog.dAccountNumber = transferRecord[2];
+		transferLog.amount = stod(transferRecord[3]);
+		transferLog.sBalance = stod(transferRecord[4]);
+		transferLog.dBalance = stod(transferRecord[5]);
+		transferLog.sFullName = transferRecord[6];
+
+		return transferLog;
+
+	}
 
 public:
 
@@ -295,6 +335,59 @@ public:
 
 		 return totalBalances;
 	 }
+
+
+	  bool transfer(clsBankClient &destinationClient,double transferAmount) {
+
+		 if (transferAmount > accountBalance) {
+			 return false;
+		 }
+
+		 else {
+
+			 Withdraw(transferAmount);
+			 destinationClient.Deposit(transferAmount);
+			 _loadTransferLogsToFile(destinationClient, transferAmount);
+			 return true;
+		 }
+
+	 }
+
+	  //___________________________________________________________________
+	  // logs
+
+	  struct stTransferLogs {
+
+		  string time;
+		  string sAccountNumber;
+		  string dAccountNumber;
+		  double amount;
+		  double sBalance;
+		  double dBalance;
+		  string sFullName;
+
+	  };
+
+
+	  static vector<stTransferLogs> loadTransferLogsToStVector() {
+
+		  vector <stTransferLogs> vTransferRecord;
+		  fstream myFile;
+		  myFile.open("transferLogs.txt", ios::in);
+
+		  if (myFile.is_open()) {
+			  string line;
+			  while (getline(myFile, line)) {
+
+				  vTransferRecord.push_back(_convertLineToStTransferLogs(line));
+
+			  }
+			  myFile.close();
+		  }
+
+		  return vTransferRecord;
+	  }
+
 
 };
 
