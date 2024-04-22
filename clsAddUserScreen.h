@@ -112,6 +112,14 @@ private:
 
 			}
 
+			cout << "Do you want to give access to logins registerd? y/n ";
+
+			if (clsInputValidate::readChar() == 'y') {
+
+				permission += clsUserInfo::enMainMenuPermissions::pLogInRegisters;
+
+			}
+
 			return permission;
 		}
 
