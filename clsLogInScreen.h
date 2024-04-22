@@ -12,9 +12,6 @@
 class clsLogInScreen : protected clsScreen
 {
 
-private:
-
-
 public:
 
     static void showLogInScreen() {

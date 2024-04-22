@@ -143,6 +143,7 @@
     <ClInclude Include="clsGlobal.h" />
     <ClInclude Include="clsInputValidate.h" />
     <ClInclude Include="clsListUsersScreen.h" />
+    <ClInclude Include="clsLogInRegisters.h" />
     <ClInclude Include="clsLogInScreen.h" />
     <ClInclude Include="clsMainScreen.h" />
     <ClInclude Include="clsManageUsersScreen.h" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Clients.txt" />
+    <Text Include="logFile.txt" />
     <Text Include="Users.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

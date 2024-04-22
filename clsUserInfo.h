@@ -91,6 +91,27 @@ private:
 	}
 
 	//___________________________________________________________________________________
+	// logs
+
+	struct stUserRegisterd;
+
+	static stUserRegisterd _convertLineToStUserRegisterd(string Line, string Seperator = "#//#") {
+
+		vector<string> vUserRecord;
+
+		vUserRecord = clsString::splitString(Line, Seperator);
+
+		stUserRegisterd userRegisterd;
+
+		userRegisterd.time = vUserRecord[0];
+		userRegisterd.fullName = vUserRecord[1] + " " + vUserRecord[2];
+		userRegisterd.password = vUserRecord[3];
+		userRegisterd.permission = vUserRecord[4];
+
+		return userRegisterd;
+	}
+
+	//___________________________________________________________________________________
 
 	static clsUserInfo _getEmptyUserObject() {
 
@@ -126,7 +147,7 @@ public:
 
 	enum enMainMenuPermissions {
 		eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
-		pUpdateClients = 8, pFindClient = 16, pTransactions = 32, pManageUsers = 64
+		pUpdateClients = 8, pFindClient = 16, pTransactions = 32, pManageUsers = 64, pLogInRegisters = 128
 	};
 	
 	clsUserInfo(enMode Mode ,string firstName, string lastName, string Email, string Phone,string userNumber ,string Password, int userPermission) : clsPerson(firstName,lastName,Email,Phone) {
@@ -299,6 +320,17 @@ public:
 
 	  }
 
+	  //____________________________________________________________________________________
+	  // logs
+
+	  struct stUserRegisterd {
+
+		  string time;
+		  string fullName;
+		  string password;
+		  string permission;
+	  };
+
 	   void loadLogsToFile() {
 
 		  string seperator = "#//#";
@@ -317,6 +349,25 @@ public:
 			  myFile.close();
 		  }
 	  }
+
+	   static vector<stUserRegisterd> _loadRegistersToStVector() {
+
+		   vector <stUserRegisterd> vRegisterdRecord;
+		   fstream myFile;
+		   myFile.open("logFile.txt", ios::in);
+
+		   if (myFile.is_open()) {
+			   string line;
+			   while (getline(myFile, line)) {
+
+				   vRegisterdRecord.push_back(_convertLineToStUserRegisterd(line));
+
+			   }
+			   myFile.close();
+		   }
+
+		   return vRegisterdRecord;
+	   }
 
 
 
