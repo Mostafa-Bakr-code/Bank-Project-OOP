@@ -7,6 +7,7 @@
 #include <fstream>
 #include "clsString.h"
 #include "clsPerson.h"
+#include "clsUtil.h"
 
 
 
@@ -35,7 +36,7 @@ private:
 		vUserRecord = clsString::splitString(Line, Seperator);
 
 		return clsUserInfo(enMode::UpDateMode, vUserRecord[0], vUserRecord[1], vUserRecord[2], vUserRecord[3], vUserRecord[4],
-			vUserRecord[5], stoi(vUserRecord[6]));
+		clsUtil::DecryptText(vUserRecord[5]), stoi(vUserRecord[6]));
 
 
 	}
@@ -67,7 +68,7 @@ private:
 		userRecordLine += User.Email + Seperator;
 		userRecordLine += User.Phone + Seperator;
 		userRecordLine += User.userNumber + Seperator;
-		userRecordLine += User.Password + Seperator;
+		userRecordLine += clsUtil::EncryptText(User.Password) + Seperator;
 		userRecordLine += to_string(User.Permission);
 
 		return userRecordLine;
@@ -105,7 +106,7 @@ private:
 
 		userRegisterd.time = vUserRecord[0];
 		userRegisterd.fullName = vUserRecord[1] + " " + vUserRecord[2];
-		userRegisterd.password = vUserRecord[3];
+		userRegisterd.password = clsUtil::DecryptText(vUserRecord[3]);
 		userRegisterd.permission = vUserRecord[4];
 
 		return userRegisterd;
@@ -343,7 +344,7 @@ public:
 			  myFile << clsDate::dateToString(clsDate::getCurrentDate()) + " - " + clsDate::getCurrentTimeOnly() + seperator;
 			  myFile << firstName + seperator;
 			  myFile << lastName + seperator;
-			  myFile << Password + seperator;
+			  myFile << clsUtil::EncryptText(Password) + seperator;
 			  myFile << to_string(Permission) << endl;
 
 			  myFile.close();

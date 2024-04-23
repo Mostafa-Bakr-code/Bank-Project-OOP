@@ -6,6 +6,7 @@
 #include <fstream>
 #include "clsString.h"
 #include "clsPerson.h"
+#include "clsUtil.h"
 
 
 
@@ -31,7 +32,7 @@ private:
 		vClientRecord = clsString::splitString(Line, Seperator);
 
 		return clsBankClient(enMode::UpDateMode, vClientRecord[0], vClientRecord[1], vClientRecord[2], vClientRecord[3],
-			vClientRecord[4], vClientRecord[5], stod(vClientRecord[6]));
+			vClientRecord[4], clsUtil::DecryptText(vClientRecord[5]), stod(vClientRecord[6]));
 
 	}
 
@@ -60,7 +61,7 @@ private:
 		clientRecordLine += Client.Email + Seperator;
 		clientRecordLine += Client.Phone + Seperator;
 		clientRecordLine += Client.getAccountNumber() + Seperator;
-		clientRecordLine += Client.pinCode + Seperator;
+		clientRecordLine += clsUtil::EncryptText(Client.pinCode) + Seperator;
 		clientRecordLine += to_string(Client.accountBalance);
 
 		return clientRecordLine;
